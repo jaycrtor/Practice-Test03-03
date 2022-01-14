@@ -1,6 +1,7 @@
 /***********************************************************************
 Given a list of positive integers, print each integer and pause for that
-many milliseconds before printing the next one.
+many milliseconds before printing the next one. Make sure you use a recursive
+approach to solve this problem.
 
 Example:
 

@@ -96,5 +96,24 @@ describe("printAndPause()", function() {
     printAndPause([200,800,200,800,200,800]);
   });
 
+  it("should retain correct timing between each console log", function(done) {
+    let msecs = 2000;
+    this.timeout(msecs + 200);
 
+    let setIntervalSpy;
+    let setConsoleLogSpy;
+    setTimeout(function() {
+      expect(setIntervalSpy).to.have.been.called.nth(2).with(100);
+      expect(setConsoleLogSpy).to.have.been.called.nth(2).with(100);
+      expect(setIntervalSpy).to.have.been.called.exactly(2);
+      expect(setConsoleLogSpy).to.have.been.called.exactly(2);
+
+      done();
+    }, 400);
+
+    setIntervalSpy = chai.spy.on(global, "setTimeout");
+    setConsoleLogSpy = chai.spy.on(console, "log");
+
+    printAndPause([300,100,300]);
+  });
 });
