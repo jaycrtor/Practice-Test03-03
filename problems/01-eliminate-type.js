@@ -53,11 +53,31 @@ Run tests on just this file by typing `npm test test/01-eliminate-type-spec.js`
 on the command line.
 
 ***********************************************************************/
-
-function eliminateType(arr) {
-  // Your code here
+function eliminateType(arr){
+  return (str)=>{
+    let result = [];
+    for(let type of arr){
+      if(typeof type !== str) result.push(type)
+    }
+    return result
+  }
 }
 
+// function eliminateType(arr) {
+//   const filterArr = type =>{
+//     let result = []
+//     for(let elements of arr) if( typeof elements !== type) result.push(elements)
+//     return result
+//   }
+//   return filterArr
+
+// }
+const eliminate = eliminateType([2, undefined, 'world', { color: 'red' }, true, 3, [4, 5], 'hello', false]);
+console.log(eliminate('number')); // [undefined, 'world', { color: 'red' }, true, [4, 5], 'hello', false]
+console.log(eliminate('object')); // [2, undefined, 'world', true, 3, 'hello', false]
+const smallEliminate = eliminateType([1, 'one', 2, 'two', 3, 'three']);
+console.log(smallEliminate('number')); // ['one', 'two', 'three']
+console.log(smallEliminate('string')); // [1, 2, 3]
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
   module.exports = eliminateType;

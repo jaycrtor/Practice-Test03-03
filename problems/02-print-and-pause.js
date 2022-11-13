@@ -25,9 +25,24 @@ on the command line.
 ***********************************************************************/
 
 function printAndPause(nums) {
-  // Your code here
+  if(!nums.length ) return;
+  let num = nums.shift()
+  console.log(num)
+  return setTimeout(()=>printAndPause(nums),num)
 }
-
+// printAndPause([200, 800, 200, 800, 200, 800])
+// 200
+// // pause 200ms
+// 800
+// // pause 800ms
+// 200
+// // pause 200ms
+// 800
+// // pause 800ms
+// 200
+// // pause 200ms
+// 800
+// // // pause 800ms
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
   module.exports = printAndPause;
